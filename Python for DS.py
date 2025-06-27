@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 
-sales_df = pd.read_csv("SalesData.csv")
-diamonds_df = pd.read_csv("diamonds.csv")
-
+sales_df = pd.read_csv(r"C:\Users\hp\Desktop\SalesData.csv")
+diamonds_df = pd.read_csv(r"C:\Users\hp\Desktop\diamonds.csv")
+imdb_df = pd.read_csv(r"C:\Users\hp\Desktop\imdb.csv")
 
 # Q1
 
@@ -48,6 +48,36 @@ sales_by_manager = sales_df.groupby("Manager")["Sale_amt"].sum()
 percent_sales = (sales_by_manager / total_sales_all) * 100
 q6 = percent_sales.reset_index()
 q6 = q6.rename(columns={"Sale_amt": "percent_sales"})
+
+# Q7
+
+q7 = imdb_df.iloc[4]["imdb_rating"]
+
+# Q8
+
+shortest_duration_index = imdb_df["duration"].idxmin()
+longest_duration_index = imdb_df["duration"].idxmax()
+
+shortest_title = imdb_df.loc[shortest_duration_index, "title"]
+longest_title = imdb_df.loc[longest_duration_index, "title"]
+
+q8 = (shortest_title, longest_title)
+
+# Q9
+
+imdb_df["release_date"] = pd.to_datetime(imdb_df["release_date"], errors="coerce")
+
+q9 = imdb_df.sort_values(
+    by=["release_date", "imdb_rating"],
+    ascending=[True, False]
+)
+
+# Q10
+
+q10 = imdb_df[
+    (imdb_df["duration"] >= 1800) &
+    (imdb_df["duration"] <= 10800)
+]
 
 # Q11
 
