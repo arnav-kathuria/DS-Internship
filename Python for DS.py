@@ -8,7 +8,7 @@ imdb_df = pd.read_csv(r"C:\Users\hp\Desktop\imdb.csv")
 # Q1
 
 q1 = sales_df.groupby("Item")["Sale_amt"].min()
-q1 = q1.reset_index()
+q1 = q1.reset_index() # used reset_index because of group by
 
 # Q2
 
@@ -90,8 +90,7 @@ q12 = diamonds_df.dropna(subset=["carat", "cut"])
 
 # Q13
 
-numeric_cols = diamonds_df.select_dtypes(include=[np.number])
-q13 = numeric_cols.copy()
+q13 = diamonds_df.select_dtypes(include=[np.number])
 
 # Q14
 
