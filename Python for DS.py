@@ -49,10 +49,6 @@ percent_sales = (sales_by_manager / total_sales_all) * 100
 q6 = percent_sales.reset_index()
 q6 = q6.rename(columns={"Sale_amt": "percent_sales"})
 
-# ---------------------------------------
-# QUESTIONS BASED ON DIAMONDS DATA
-# ---------------------------------------
-
 # Q11
 
 duplicates = diamonds_df.duplicated()
